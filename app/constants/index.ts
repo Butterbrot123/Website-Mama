@@ -1,4 +1,4 @@
-  import { bg, orden, postkartenalben, besteck, pommern, bierkrug, schallplatten, Bücher, Fotoalben, bernstein, briefmarken, foto, feldpost, geld, kolonien,signiert, skulptur, füller, modeheft, anstecknadeln, ring, Schlesien, ostpreussen, taschenuhr } from '@/public/images/';
+  import { bg, orden, postkartenalben, besteck, pommern, bierkrug, schallplatten, Bücher, Fotoalben, bernstein, briefmarken, foto, feldpost, geld, kolonien,signiert, skulptur, füller, modeheft, anstecknadeln, ring, Schlesien, ostpreussen, taschenuhr } from '@/public/images';
   
 
 export const products = [

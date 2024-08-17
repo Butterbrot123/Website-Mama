@@ -1,0 +1,18 @@
+/** @type {import('next').NextConfig} */
+const nextConfig = {
+  images: {
+    loader: 'akamai',
+    path: '',
+    unoptimized: true, // Disabling image optimization API
+  },
+  reactStrictMode: true, // Next.js specific configuration
+  async rewrites() {
+    return [
+      // Example rewrites
+      { source: '/Buying', destination: '/Buying' },
+    ];
+  },
+  // You can add other Next.js configurations here
+};
+
+module.exports = nextConfig;

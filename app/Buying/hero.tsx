@@ -1,5 +1,5 @@
 import Image from 'next/image';
-import headerBackground from '@/public/images/lady.jpg';
+import headerBackground from '@/public/images/ankauf1.png';
 
 export default function Hero() {
   return (

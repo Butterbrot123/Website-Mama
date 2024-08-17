@@ -24,7 +24,7 @@ export default function Hero() {
                 ANKAUF VON KLASSISCHEM DESIGN, ANTIK UND SCHMUCK
               </p>
               <div className="max-w-xs mx-auto sm:max-w-none sm:flex sm:justify-center">
-                <Link href="/contact">
+                <Link href="/contact" legacyBehavior>
                   <a className="bg-zinc-900 hover:bg-sky-900 duration-300 hover:scale-105 hover:shadow-lg text-white px-8 py-5 font-bold transition block">
                     Jetzt Kontaktieren
                   </a>

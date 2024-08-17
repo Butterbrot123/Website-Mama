@@ -1,7 +1,6 @@
 import { FaEnvelope, FaPhoneAlt } from 'react-icons/fa';
 import Image from 'next/image';
 import foto from '@/public/images/telefon.jpg';
-
 const AboutSection = () => {
   return (
     <div className="bg-dark-red padding   p-10 lg:p-16">

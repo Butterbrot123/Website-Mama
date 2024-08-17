@@ -41,7 +41,7 @@ export default function Header() {
               </Link>
               </li>
               <li>
-              <Link href="/Buying" className="btn-sm text-sky-900 hover:text-linkHovertxt-500">
+              <Link href="/Buying" passHref className="btn-sm text-sky-900 hover:text-linkHovertxt-500">
               Ankauf
               </Link>
               

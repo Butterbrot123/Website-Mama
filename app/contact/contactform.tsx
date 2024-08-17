@@ -1,32 +1,30 @@
-import emailjs from '@emailjs/browser';
-import { useRef, useState } from 'react';
+import { sendForm } from "@emailjs/browser";
+import { useRef, useState } from "react";
 
-export const ContactUs = () => {
-  const form = useRef();
+const ContactUs = () => {
+  const formRef = useRef<HTMLFormElement>(null);
   const [messageSent, setMessageSent] = useState(false); // State to track if message has been sent
-  const [errorMessage, setErrorMessage] = useState(''); // State to track error message if sending failed
+  const [errorMessage, setErrorMessage] = useState(""); // State to track error message if sending failed
 
-  const sendEmail = (e) => {
-    e.preventDefault();
-
-    emailjs
-      .sendForm(
-        'service_80d41xj',
-        'template_u2bj10n',
-        form.current,
-        'feglpkv514Ul3Qcry'
-      )
-      .then(
+  const sendEmail = () => {
+    if (formRef.current) {
+      sendForm(
+        "service_80d41xj",
+        "template_u2bj10n",
+        formRef.current,
+        "feglpkv514Ul3Qcry"
+      ).then(
         (result) => {
-          console.log('SUCCESS!', result.text);
+          console.log("SUCCESS!", result.text);
           setMessageSent(true); // Set the state that message has been sent
-          setErrorMessage(''); // Clear any previous error message
+          setErrorMessage(""); // Clear any previous error message
         },
         (error) => {
-          console.log('FAILED...', error.text);
-          setErrorMessage('Failed to send message. Please try again.'); // Set error message
+          console.log("FAILED...", error.text);
+          setErrorMessage("Failed to send message. Please try again."); // Set error message
         }
       );
+    }
   };
 
   return (
@@ -42,11 +40,23 @@ export const ContactUs = () => {
           </p>
           {/* Show confirmation message based on the state */}
           {messageSent ? (
-            <div className="text-center text-green-500">Nachricht erfolgreich gesendet!</div>
+            <div className="text-center text-green-500">
+              Nachricht erfolgreich gesendet!
+            </div>
           ) : (
             <>
-              {errorMessage && <div className="text-center text-red-500">{errorMessage}</div>}
-              <form ref={form} onSubmit={sendEmail} className="space-y-8">
+              {errorMessage && (
+                <div className="text-center text-red-500">{errorMessage}</div>
+              )}
+              <form
+                ref={formRef}
+                onSubmit={(evnt) => {
+                  evnt.preventDefault();
+
+                  sendEmail();
+                }}
+                className="space-y-8"
+              >
                 <div>
                   <label
                     htmlFor="email"
@@ -79,7 +89,7 @@ export const ContactUs = () => {
                     required
                   />
                 </div>
-                
+
                 <div className="sm:col-span-2">
                   <label
                     htmlFor="message"
@@ -90,7 +100,7 @@ export const ContactUs = () => {
                   <textarea
                     id="message"
                     name="message"
-                    rows="6"
+                    rows={6}
                     className="block p-2.5 w-full  text-gray-900 sm:text-xl bg-gray-50 rounded-lg shadow-sm border border-gray-300 focus:ring-primary-500 focus:border-primary-500"
                     placeholder="Was möchten Sie uns fragen?"
                     required
